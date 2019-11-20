@@ -1,0 +1,46 @@
+<apex:page showHeader="true" sidebar="true" controller="MappingSetupController" action="{!init}">
+	<apex:form >
+		<apex:outputPanel id="messagesPanel">
+			<apex:pageMessages />
+		</apex:outputPanel>
+		<apex:pageBlock title="Object Mapping" mode="edit">
+			<apex:pageBlockButtons location="bottom">
+				<apex:commandButton action="{!Save}" value="Save Everything!"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection id="objectPanel">
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Object"/>
+					<apex:selectList value="{!currentObject}" size="1" multiselect="false">
+						<apex:actionSupport action="{!switchObject}" event="onchange" reRender="fieldsPanel, objectPanel, messagesPanel" status="sobjectStatus"/>
+						<apex:selectOptions value="{!objects}"/>
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem rendered="{!LOWER(sobjectName) != 'user'}">
+					<apex:outputLabel value="SObject Name"/>
+					<apex:inputText value="{!sobjectName}">
+						<apex:actionSupport action="{!loadFields}" event="onblur" reRender="fieldsPanel, objectPanel, messagesPanel" status="sobjectStatus"/>
+					</apex:inputText>
+				</apex:pageBlockSectionItem>
+				<apex:actionStatus startText="Loading fields..." stopText="" id="sobjectStatus"/>
+			</apex:pageBlockSection>
+			<hr/>
+			<apex:outputPanel id="fieldsPanel">
+				<apex:pageBlockSection rendered="{!showFields}">
+					<apex:repeat value="{!orderedKeys[currentObject]}" var="key">
+						<apex:pageBLockSectionItem rendered="{!key != 'spacer'}">
+							<apex:outputLabel value="{!mappingFields[currentObject][key].label}"/>
+							<apex:outputPanel layout="none">
+								<apex:selectList value="{!objSettings[key]}" rendered="{!mappingFields[currentObject][key].type != 'free' && mappingFields[currentObject][key].type != 'checkbox'}" size="1" multiselect="false">
+									<apex:selectOptions value="{!allFields[mappingFields[currentObject][key].type]}"/>
+								</apex:selectList>
+								<apex:inputText value="{!objSettings[key]}" rendered="{!mappingFields[currentObject][key].type == 'free'}"/>
+								<apex:inputCheckbox value="{!objSettings[key]}" rendered="{!mappingFields[currentObject][key].type == 'checkbox'}"/>
+							</apex:outputPanel>
+						</apex:pageBLockSectionItem>
+						<apex:pageBLockSectionItem rendered="{!key == 'spacer'}"></apex:pageBLockSectionItem>
+					</apex:repeat>
+				</apex:pageBlockSection>
+			</apex:outputPanel>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>
