@@ -2,9 +2,9 @@ public with sharing class MappingSetupController
 {
 	public class field
 	{
-		public String label {get; set;}
-		public String type {get; set;}
-		public Boolean ignoreDupes {get; set;}
+		@AuraEnabled public String label {get; set;}
+		@AuraEnabled public String type {get; set;}
+		@AuraEnabled public Boolean ignoreDupes {get; set;}
 
 		public field(String label, String type)
 		{
