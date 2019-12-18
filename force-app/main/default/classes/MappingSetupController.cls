@@ -1,5 +1,15 @@
 public with sharing class MappingSetupController
-{
+ {
+
+  public class selectOption2 {
+    @auraEnabled public string value {get;set;}
+    @auraEnabled public string label {get;set;}
+
+    public selectOption2(String value, String label) {
+      this.value = value;
+      this.label = label;
+    }
+  }
 	public class field
 	{
 		@AuraEnabled public String label {get; set;}
@@ -23,21 +33,21 @@ public with sharing class MappingSetupController
 
 	public Objects__c objSettings {get; set;}
 
-	public List<SelectOption> objects {get; set;}
+	public List<selectOption2> objects {get; set;}
 	public Map<String, List<Integer>> keyIndexMap {get; set;}
 	public String currentObject {get; set;}
 	public String sobjectName {get; set;}
 	public String profileId {get; set;}
 
-	public List<SelectOption> availableDateFields {get; set;}
-	public List<SelectOption> availableDatetimeFields {get; set;}
-	public List<SelectOption> availableTextFields {get; set;}
-	public List<SelectOption> availableLookupFields {get; set;}
-	public List<SelectOption> availableBooleanFields {get; set;}
+	public List<selectOption2> availableDateFields {get; set;}
+	public List<selectOption2> availableDatetimeFields {get; set;}
+	public List<selectOption2> availableTextFields {get; set;}
+	public List<selectOption2> availableLookupFields {get; set;}
+	public List<selectOption2> availableBooleanFields {get; set;}
 
-	public Map<String, List<SelectOption>> allFields {get; set;}
+	public Map<String, List<selectOption2>> allFields {get; set;}
 
-	public List<SelectOption> profiles {get; set;}
+	public List<selectOption2> profiles {get; set;}
 
 	public Boolean showFields {get; set;}
 	public Boolean showSOQL {get; set;}
@@ -67,10 +77,10 @@ public with sharing class MappingSetupController
 
 		loadProfiles();
 
-		objects = new List<SelectOption>
+		objects = new List<selectOption2>
 		{
-			new SelectOption('client', 'Client'),
-			new SelectOption('event', 'Event')
+			new selectOption2('client', 'Client'),
+			new selectOption2('event', 'Event')
 		};
 	}
 
@@ -111,14 +121,14 @@ public with sharing class MappingSetupController
 
 	private void loadProfiles()
 	{
-		profiles = new List<SelectOption>
+		profiles = new List<selectOption2>
 		{
-			new SelectOption(UserInfo.getOrganizationId(), 'Organisation Default')
+			new selectOption2(UserInfo.getOrganizationId(), 'Organisation Default')
 		};
 
 		for(Profile p : [SELECT Id, Name FROM Profile ORDER BY Name])
 		{
-			profiles.add(new SelectOption(p.Id, p.Name));
+			profiles.add(new selectOption2(p.Id, p.Name));
 		}
 
 	}
@@ -150,11 +160,11 @@ public with sharing class MappingSetupController
 		{
 			if(sobjectName == '')
 			{
-				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Info, 'Fields will be displayed once an object API name has been set.'));
+				//ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Info, 'Fields will be displayed once an object API name has been set.'));
 			}
 			else
 			{
-				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, sobjectName + ' does not appear to be a valid SObject type.'));
+				//ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, sobjectName + ' does not appear to be a valid SObject type.'));
 			}
 			return;
 		}
@@ -166,29 +176,29 @@ public with sharing class MappingSetupController
 
 		showFields = (orderedKeys.keySet().contains(currentObject));
 
-		availableDateFields = new List<SelectOption>();
-		availableDatetimeFields = new List<SelectOption>();
-		availableTextFields = new List<SelectOption>();
-		availableLookupFields = new List<SelectOption>();
-		availableBooleanFields = new List<SelectOption>();
+		availableDateFields = new List<selectOption2>();
+		availableDatetimeFields = new List<selectOption2>();
+		availableTextFields = new List<selectOption2>();
+		availableLookupFields = new List<selectOption2>();
+		availableBooleanFields = new List<selectOption2>();
 
-		allFields = new Map<String, List<SelectOption>>
+		allFields = new Map<String, List<selectOption2>>
 		{
-			'date' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'datetime' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'lookup' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'boolean' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'text' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'picklist' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'number' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'child' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'any' => new List<SelectOption>{new SelectOption('', '--None--')},
-			'filter-op' => new List<SelectOption>
+			'date' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'datetime' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'lookup' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'boolean' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'text' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'picklist' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'number' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'child' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'any' => new List<selectOption2>{new selectOption2('', '--None--')},
+			'filter-op' => new List<selectOption2>
 				{
-					new SelectOption('', '--None--'),
-					new SelectOption('in', 'in'),
-					new SelectOption('includes', 'includes'),
-					new SelectOption('like', 'like')
+					new selectOption2('', '--None--'),
+					new selectOption2('in', 'in'),
+					new selectOption2('includes', 'includes'),
+					new selectOption2('like', 'like')
 				}
 		};
 
@@ -201,7 +211,7 @@ public with sharing class MappingSetupController
 		for(String field : fieldKeys)
 		{
 			SChema.DescribeFieldResult dfr = fieldMap.get(field).getDescribe();
-			SelectOption so = new SelectOption(dfr.getName(), dfr.getLabel());
+			selectOption2 so = new selectOption2(dfr.getName(), dfr.getLabel());
 
 			allFields.get('any').add(so);
 
@@ -230,7 +240,7 @@ public with sharing class MappingSetupController
 		for(Schema.ChildRelationship cr : objType.getDescribe().getChildRelationships())
 		{
 			if(cr.getRelationshipName() != null)
-				allFields.get('child').add(new SelectOption(cr.getRelationshipName(), cr.getRelationshipName()  + ' (' + cr.getChildSObject() + ')'));
+				allFields.get('child').add(new selectOption2(cr.getRelationshipName(), cr.getRelationshipName()  + ' (' + cr.getChildSObject() + ')'));
 		}
 	}
 

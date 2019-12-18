@@ -1,0 +1,27 @@
+<template>
+  <lightning-card
+    variant="Narrow"
+    title="Customize Settings"
+    icon-name="standard:account"
+  >
+    <lightning-combobox
+      name="SelectObject"
+      label="Select Object"
+      value="{selectedObject}"
+      placeholder="Select Object"
+      options="{objectOptions}"
+      onchange="{handleChange}"
+      slot="actions"
+      variant="label-hidden"
+    ></lightning-combobox>
+
+    <p class="slds-p-horizontal_small">
+      <template if:true="{orderedKeys}">
+        <template for:each="{getKeys}" for:item="dave">
+          <li key="{dave.label}">{dave.label}</li>
+        </template>
+      </template>
+    </p>
+    <p slot="footer">Made with code style angst in California</p>
+  </lightning-card>
+</template>

@@ -1,0 +1,559 @@
+{
+  "event": {
+    "Event_Owner__c": {
+      "type": "lookup",
+      "label": "Event Owner",
+      "ignoreDupes": false
+    },
+    "Event_Created_By__c": {
+      "type": "lookup",
+      "label": "Event Created By",
+      "ignoreDupes": false
+    },
+    "Event_Client__c": {
+      "type": "lookup",
+      "label": "Event Client",
+      "ignoreDupes": false
+    },
+    "Event_End_Date_Time__c": {
+      "type": "datetime",
+      "label": "End Date Time",
+      "ignoreDupes": false
+    },
+    "Event_Start_Date_Time__c": {
+      "type": "datetime",
+      "label": "Start Date Time",
+      "ignoreDupes": false
+    },
+    "Event_Attended__c": {
+      "type": "boolean",
+      "label": "Attended",
+      "ignoreDupes": false
+    },
+    "Event_Subject__c": {
+      "type": "text",
+      "label": "Subject",
+      "ignoreDupes": false
+    },
+    "Event_Type__c": {
+      "type": "text",
+      "label": "Event Type",
+      "ignoreDupes": false
+    }
+  },
+  "client": {
+    "Client_Profile_Image__c": {
+      "type": "text",
+      "label": "Profile Image",
+      "ignoreDupes": false
+    },
+    "Client_Phone__c": {
+      "type": "text",
+      "label": "Phone",
+      "ignoreDupes": false
+    },
+    "Client_Alternate_Email__c": {
+      "type": "text",
+      "label": "Alternate Email",
+      "ignoreDupes": false
+    },
+    "Client_Address_Postcode__c": {
+      "type": "text",
+      "label": "Address Postcode",
+      "ignoreDupes": false
+    },
+    "Client_Address_Country__c": {
+      "type": "text",
+      "label": "Address Country",
+      "ignoreDupes": false
+    },
+    "Client_Address_City__c": {
+      "type": "text",
+      "label": "Address City",
+      "ignoreDupes": false
+    },
+    "Client_Last_Name__c": {
+      "type": "text",
+      "label": "Last Name",
+      "ignoreDupes": false
+    },
+    "Client_First_Name__c": {
+      "type": "text",
+      "label": "First Name",
+      "ignoreDupes": false
+    },
+    "Client_Email__c": {
+      "type": "text",
+      "label": "Email",
+      "ignoreDupes": false
+    }
+  },
+  "filter-op": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "in",
+      "label": "in"
+    },
+    {
+      "value": "includes",
+      "label": "includes"
+    },
+    {
+      "value": "like",
+      "label": "like"
+    }
+  ],
+  "any": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "AccountId",
+      "label": "Account ID"
+    },
+    {
+      "value": "ActivityDate",
+      "label": "Due Date Only"
+    },
+    {
+      "value": "ActivityDateTime",
+      "label": "Due Date Time"
+    },
+    {
+      "value": "CreatedById",
+      "label": "Created By ID"
+    },
+    {
+      "value": "CreatedDate",
+      "label": "Created Date"
+    },
+    {
+      "value": "Description",
+      "label": "Description"
+    },
+    {
+      "value": "DurationInMinutes",
+      "label": "Duration"
+    },
+    {
+      "value": "EndDateTime",
+      "label": "End Date Time"
+    },
+    {
+      "value": "GroupEventType",
+      "label": "Group Event Type"
+    },
+    {
+      "value": "Id",
+      "label": "Activity ID"
+    },
+    {
+      "value": "IsAllDayEvent",
+      "label": "All-Day Event"
+    },
+    {
+      "value": "IsArchived",
+      "label": "Archived"
+    },
+    {
+      "value": "IsChild",
+      "label": "Is Child"
+    },
+    {
+      "value": "IsDeleted",
+      "label": "Deleted"
+    },
+    {
+      "value": "IsGroupEvent",
+      "label": "Is Group Event"
+    },
+    {
+      "value": "IsPrivate",
+      "label": "Private"
+    },
+    {
+      "value": "IsRecurrence",
+      "label": "Create Recurring Series of Events"
+    },
+    {
+      "value": "IsReminderSet",
+      "label": "Reminder Set"
+    },
+    {
+      "value": "LastModifiedById",
+      "label": "Last Modified By ID"
+    },
+    {
+      "value": "LastModifiedDate",
+      "label": "Last Modified Date"
+    },
+    {
+      "value": "Location",
+      "label": "Location"
+    },
+    {
+      "value": "OwnerId",
+      "label": "Assigned To ID"
+    },
+    {
+      "value": "RecurrenceActivityId",
+      "label": "Recurrence Activity ID"
+    },
+    {
+      "value": "RecurrenceDayOfMonth",
+      "label": "Recurrence Day of Month"
+    },
+    {
+      "value": "RecurrenceDayOfWeekMask",
+      "label": "Recurrence Day of Week Mask"
+    },
+    {
+      "value": "RecurrenceEndDateOnly",
+      "label": "Recurrence End"
+    },
+    {
+      "value": "RecurrenceInstance",
+      "label": "Recurrence Instance"
+    },
+    {
+      "value": "RecurrenceInterval",
+      "label": "Recurrence Interval"
+    },
+    {
+      "value": "RecurrenceMonthOfYear",
+      "label": "Recurrence Month of Year"
+    },
+    {
+      "value": "RecurrenceStartDateTime",
+      "label": "Recurrence Start"
+    },
+    {
+      "value": "RecurrenceTimeZoneSidKey",
+      "label": "Recurrence Time Zone"
+    },
+    {
+      "value": "RecurrenceType",
+      "label": "Recurrence Type"
+    },
+    {
+      "value": "ReminderDateTime",
+      "label": "Reminder Date/Time"
+    },
+    {
+      "value": "ShowAs",
+      "label": "Show Time As"
+    },
+    {
+      "value": "StartDateTime",
+      "label": "Start Date Time"
+    },
+    {
+      "value": "Subject",
+      "label": "Subject"
+    },
+    {
+      "value": "SystemModstamp",
+      "label": "System Modstamp"
+    },
+    {
+      "value": "Type",
+      "label": "Type"
+    },
+    {
+      "value": "WhatId",
+      "label": "Related To ID"
+    },
+    {
+      "value": "WhoId",
+      "label": "Name ID"
+    }
+  ],
+  "child": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "AcceptedEventRelations",
+      "label": "AcceptedEventRelations (AcceptedEventRelation)"
+    },
+    {
+      "value": "AttachedContentDocuments",
+      "label": "AttachedContentDocuments (AttachedContentDocument)"
+    },
+    {
+      "value": "Attachments",
+      "label": "Attachments (Attachment)"
+    },
+    {
+      "value": "CombinedAttachments",
+      "label": "CombinedAttachments (CombinedAttachment)"
+    },
+    {
+      "value": "ContentDocumentLinks",
+      "label": "ContentDocumentLinks (ContentDocumentLink)"
+    },
+    {
+      "value": "DeclinedEventRelations",
+      "label": "DeclinedEventRelations (DeclinedEventRelation)"
+    },
+    {
+      "value": "FeedSubscriptionsForEntity",
+      "label": "FeedSubscriptionsForEntity (EntitySubscription)"
+    },
+    {
+      "value": "RecurringEvents",
+      "label": "RecurringEvents (Event)"
+    },
+    {
+      "value": "Feeds",
+      "label": "Feeds (EventFeed)"
+    },
+    {
+      "value": "EventRelations",
+      "label": "EventRelations (EventRelation)"
+    },
+    {
+      "value": "TopicAssignments",
+      "label": "TopicAssignments (TopicAssignment)"
+    },
+    {
+      "value": "UndecidedEventRelations",
+      "label": "UndecidedEventRelations (UndecidedEventRelation)"
+    }
+  ],
+  "number": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "DurationInMinutes",
+      "label": "Duration"
+    },
+    {
+      "value": "RecurrenceDayOfMonth",
+      "label": "Recurrence Day of Month"
+    },
+    {
+      "value": "RecurrenceDayOfWeekMask",
+      "label": "Recurrence Day of Week Mask"
+    },
+    {
+      "value": "RecurrenceInterval",
+      "label": "Recurrence Interval"
+    }
+  ],
+  "picklist": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "GroupEventType",
+      "label": "Group Event Type"
+    },
+    {
+      "value": "RecurrenceInstance",
+      "label": "Recurrence Instance"
+    },
+    {
+      "value": "RecurrenceMonthOfYear",
+      "label": "Recurrence Month of Year"
+    },
+    {
+      "value": "RecurrenceTimeZoneSidKey",
+      "label": "Recurrence Time Zone"
+    },
+    {
+      "value": "RecurrenceType",
+      "label": "Recurrence Type"
+    },
+    {
+      "value": "ShowAs",
+      "label": "Show Time As"
+    },
+    {
+      "value": "Type",
+      "label": "Type"
+    }
+  ],
+  "text": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "Description",
+      "label": "Description"
+    },
+    {
+      "value": "GroupEventType",
+      "label": "Group Event Type"
+    },
+    {
+      "value": "Id",
+      "label": "Activity ID"
+    },
+    {
+      "value": "Location",
+      "label": "Location"
+    },
+    {
+      "value": "RecurrenceInstance",
+      "label": "Recurrence Instance"
+    },
+    {
+      "value": "RecurrenceMonthOfYear",
+      "label": "Recurrence Month of Year"
+    },
+    {
+      "value": "RecurrenceTimeZoneSidKey",
+      "label": "Recurrence Time Zone"
+    },
+    {
+      "value": "RecurrenceType",
+      "label": "Recurrence Type"
+    },
+    {
+      "value": "ShowAs",
+      "label": "Show Time As"
+    },
+    {
+      "value": "Subject",
+      "label": "Subject"
+    },
+    {
+      "value": "Type",
+      "label": "Type"
+    }
+  ],
+  "boolean": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "IsAllDayEvent",
+      "label": "All-Day Event"
+    },
+    {
+      "value": "IsArchived",
+      "label": "Archived"
+    },
+    {
+      "value": "IsChild",
+      "label": "Is Child"
+    },
+    {
+      "value": "IsDeleted",
+      "label": "Deleted"
+    },
+    {
+      "value": "IsGroupEvent",
+      "label": "Is Group Event"
+    },
+    {
+      "value": "IsPrivate",
+      "label": "Private"
+    },
+    {
+      "value": "IsRecurrence",
+      "label": "Create Recurring Series of Events"
+    },
+    {
+      "value": "IsReminderSet",
+      "label": "Reminder Set"
+    }
+  ],
+  "lookup": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "AccountId",
+      "label": "Account ID"
+    },
+    {
+      "value": "CreatedById",
+      "label": "Created By ID"
+    },
+    {
+      "value": "LastModifiedById",
+      "label": "Last Modified By ID"
+    },
+    {
+      "value": "OwnerId",
+      "label": "Assigned To ID"
+    },
+    {
+      "value": "RecurrenceActivityId",
+      "label": "Recurrence Activity ID"
+    },
+    {
+      "value": "WhatId",
+      "label": "Related To ID"
+    },
+    {
+      "value": "WhoId",
+      "label": "Name ID"
+    }
+  ],
+  "datetime": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "ActivityDateTime",
+      "label": "Due Date Time"
+    },
+    {
+      "value": "CreatedDate",
+      "label": "Created Date"
+    },
+    {
+      "value": "EndDateTime",
+      "label": "End Date Time"
+    },
+    {
+      "value": "LastModifiedDate",
+      "label": "Last Modified Date"
+    },
+    {
+      "value": "RecurrenceStartDateTime",
+      "label": "Recurrence Start"
+    },
+    {
+      "value": "ReminderDateTime",
+      "label": "Reminder Date/Time"
+    },
+    {
+      "value": "StartDateTime",
+      "label": "Start Date Time"
+    },
+    {
+      "value": "SystemModstamp",
+      "label": "System Modstamp"
+    }
+  ],
+  "date": [
+    {
+      "value": "",
+      "label": "--None--"
+    },
+    {
+      "value": "ActivityDate",
+      "label": "Due Date Only"
+    },
+    {
+      "value": "RecurrenceEndDateOnly",
+      "label": "Recurrence End"
+    }
+  ]
+}
