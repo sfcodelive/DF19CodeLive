@@ -7,18 +7,18 @@
     <lightning-combobox
       name="SelectObject"
       label="Select Object"
-      value="{selectedObject}"
+      value={selectedObject}
       placeholder="Select Object"
-      options="{objectOptions}"
-      onchange="{handleChange}"
+      options={objectOptions}
+      onchange={handleChange}
       slot="actions"
       variant="label-hidden"
     ></lightning-combobox>
 
     <p class="slds-p-horizontal_small">
-      <template if:true="{orderedKeys}">
-        <template for:each="{getKeys}" for:item="dave">
-          <li key="{dave.label}">{dave.label}</li>
+      <template if:true={orderedKeys}>
+        <template for:each={getKeys} for:item="dave">
+          <li key={dave.label}>{dave.label}</li>
         </template>
       </template>
     </p>
